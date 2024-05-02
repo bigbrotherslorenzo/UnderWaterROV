@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 0    420
 1    380
 2    390
 Name: calories, dtype: int64
+=======
+0.44
+>>>>>>> Stashed changes
