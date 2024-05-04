@@ -5,12 +5,11 @@ from datetime import datetime
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S") 
 
-data = {
+data1 = {
   "time": [],
   "depth": []
   }
 
-df = pd.DataFrame(data)
 
 serverAddress = ('192.168.1.142', 2222)
 bufferSize = 1600000 
@@ -28,10 +27,13 @@ while True:
     data=data.decode('utf-8')
     with open('receiveFile.txt','w') as f:
         f.write(data)
-        f.writelines('file')
+        
     f=open('receiveFile.txt','r')
     content = f.read()
-    data['depth'].append(content)
-    data['time'].append(current_time)
-    df.to_csv('receiveFile.csv', encoding='utf-8', index=False)
+    print(content)
+    print(current_time)
+    data1['depth'].append(content)
+    data1['time'].append(current_time)
+    df = pd.DataFrame(data1)
+    df.to_csv('receiveFile.csv', index=False)
     f.close()
